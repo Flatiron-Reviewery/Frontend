@@ -1,13 +1,16 @@
+document.addEventListener('DOMContentLoaded', () => { console.log ('DOM Loaded') })
+
 fetch('https://api.openbrewerydb.org/breweries')
 .then(res => res.json())
 .then(brewery => renderCard(brewery))
-let total = 0;
+
 
 const renderCard = (brewery) => {
     console.log(brewery);
     const cardContainer = document.getElementById('card-container')
     brewery.forEach(cards => {   
 
+        let total = 0;
         const card = document.createElement('div')
         const title = document.createElement('h1')
         const location = document.createElement('h1')
@@ -21,7 +24,7 @@ const renderCard = (brewery) => {
         const form = document.createElement('form')
         const textBox = document.createElement('input')
         const submit = document.createElement('button')
-        const close = document.createElement('button')
+        const close = document.createElement('p')  //add styling to close button
 
         middleSection.className = 'content'
         reviewSection.className = 'reviews'
@@ -42,22 +45,22 @@ const renderCard = (brewery) => {
         likeButton.innerText = '+'
         dislikeButton.innerText = '-'
 
-        reviewSection.appendChild(button)
-        reviewSection.appendChild(like)
-        reviewSection.appendChild(likeButton)
-        reviewSection.appendChild(dislikeButton)
-        top.appendChild(title)
-        top.appendChild(location)
-        form.appendChild(close)
-        form.appendChild(submit)
-        form.appendChild(textBox)
-        card.appendChild(top)
-        card.appendChild(middleSection)
-        card.appendChild(reviewSection)
-        card.appendChild(form)
+        reviewSection.append(button, like, likeButton, dislikeButton);
+        // reviewSection.appendChild(like)
+        // reviewSection.appendChild(likeButton)
+        // reviewSection.appendChild(dislikeButton)
+        top.append(title, location);
+        // top.appendChild(location)
+        form.append(close,submit, textBox);
+        // form.appendChild(submit)
+        // form.appendChild(textBox)
+        card.append(top, middleSection, reviewSection, form);
+        // card.appendChild(middleSection)
+        // card.appendChild(reviewSection)
+        // card.appendChild(form)
         cardContainer.appendChild(card)
 
-        button.addEventListener('click', () => {
+        button.addEventListener('click', () => {            // transitions?
             if (form.style.display === 'flex') {
                 form.style.display = 'none';
             } else {
@@ -67,6 +70,12 @@ const renderCard = (brewery) => {
             reviewSection.style.display = 'none'
         })
 
+        close.addEventListener('click', (e) => {
+            card.style.height = '200px'
+            form.style.display = 'none'
+            reviewSection.style.display = 'flex'
+        })
+
         form.addEventListener('submit', (e) => {
             e.preventDefault()
             const p = document.createElement('p')
@@ -74,13 +83,6 @@ const renderCard = (brewery) => {
             console.log(textBox.value);
             form.appendChild(p)
             form.reset()            
-        })
-
-        close.addEventListener('click', (e) => {
-            e.preventDefault()
-            card.style.height = '200px'
-            form.style.display = 'none'
-            reviewSection.style.display = 'flex'
         })
 
         likeButton.addEventListener('click', (e) => {
