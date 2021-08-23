@@ -104,10 +104,6 @@ header h1 {
     font-weight: bold;
 }
 
-.content {
-    margin: 4%;
-}
-
 .reviews {
     display: flex;
     flex-direction: row;
@@ -123,7 +119,20 @@ header h1 {
     font-family: 'roboto';
     padding: 0.5%;
     cursor: pointer;
-    margin: auto;
+}
+
+#likes {
+    display: flex;
+    margin-left: 74%;
+    margin-top: 1%;
+}
+
+
+#likes button {
+    width: 20px;
+    height: 25px;
+    margin-top: -12%;
+
 }
 
 
@@ -131,8 +140,8 @@ header h1 {
     display: none;
     overflow: hidden;
     flex-wrap: wrap;
-    flex-direction: column;
-    margin-top: -10%;
+    flex-direction: column-reverse;
+    bottom: 0
 }
 
 #hidden-form button {
