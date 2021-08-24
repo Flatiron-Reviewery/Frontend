@@ -58,7 +58,7 @@ header {
 }
 
 header img {
-    margin-left: 2%;
+    margin-left: 14%;
 }
 
 header h3 {
@@ -86,6 +86,31 @@ header h3 {
     justify-content: space-between;
     padding-left: 2%;
     padding-right: 2%;
+}
+
+#search {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 2%;
+}
+
+#search h1 {
+    margin-bottom: 1%;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#search-form {
+    height: 30px;
+    margin-bottom: 2%;
+}
+
+#search-result {
+    display: flex;
+}
+
+#search-result .card {
+    margin-left: 2%;
 }
 
 #card {

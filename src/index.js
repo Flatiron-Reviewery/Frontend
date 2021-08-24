@@ -8,6 +8,12 @@ fetch('https://api.openbrewerydb.org/breweries')
 
 const renderCard = brewery => {
     const cardContainer = document.getElementById('card-container')
+    const search = document.getElementById('search')
+    const searchBreak = document.createElement('br')
+    const searchForm = document.querySelector('#search form')
+    const searchResult = document.createElement('div')
+    search.append(searchBreak, searchForm)
+    cardContainer.append(search)
     brewery.forEach(cards => {
         let total = 0;
 
@@ -38,6 +44,8 @@ const renderCard = brewery => {
         submit.innerText = 'Add Comment'
         modalH1.innerText = 'Comments'
         closeModal.innerText = 'X'
+        title.innerText = cards.name
+        location.innerText = `${cards.city}, ${cards.state}`
 
         card.id = 'card'
         cardTop.id = 'card-top'
@@ -53,9 +61,7 @@ const renderCard = brewery => {
         closeModal.id = 'close'
         text.id = 'text-area'
         submit.id = 'submit'
-        console.log(text);
-        title.innerText = cards.name
-        location.innerText = `${cards.city}, ${cards.state}`
+        searchResult.id = 'search-result'
 
         cardTop.append(title, location)
         mid.append(like, likeButton, dislikeButton)
@@ -97,5 +103,20 @@ const renderCard = brewery => {
             form.append(p)
             form.reset()            
         })
+
+        searchForm.addEventListener('submit', (e) => {
+            e.preventDefault()
+            const searchBar = document.getElementById('search-form').value
+            const line = document.createElement('div')
+
+            line.id = 'line'
+            card.remove()
+            search.append(searchResult)
+            console.log(location.innerText);
+            if(searchBar == location.innerText) {
+                searchResult.append(card)
+            }
+        })
     })
 }
+
