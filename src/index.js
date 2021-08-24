@@ -1,86 +1,84 @@
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM Loaded');
+})
+
 fetch('https://api.openbrewerydb.org/breweries')
 .then(res => res.json())
 .then(brewery => renderCard(brewery))
-let total = 0;
 
-const renderCard = (brewery) => {
-    console.log(brewery);
+const renderCard = brewery => {
     const cardContainer = document.getElementById('card-container')
-    brewery.forEach(cards => {   
+    brewery.forEach(cards => {
+        let total = 0;
 
         const card = document.createElement('div')
-        const title = document.createElement('h1')
-        const location = document.createElement('h1')
-        const top = document.createElement('div')
+        const cardTop = document.createElement('div')
+        const title = document.createElement('h2')
+        const location = document.createElement('h2')
+        const mid = document.createElement('mid')
+        const bottom = document.createElement('div')
+        const reviewery = document.createElement('button')
         const like = document.createElement('p')
         const likeButton = document.createElement('button')
         const dislikeButton = document.createElement('button')
-        const button = document.createElement('button')
-        const reviewSection = document.createElement('div')
-        const middleSection = document.createElement('div')
         const form = document.createElement('form')
-        const textBox = document.createElement('input')
+        const text = document.createElement('input')
         const submit = document.createElement('button')
-        const close = document.createElement('button')
+        const modal = document.createElement('div')
+        const modalH1 = document.createElement('h1')
+        const commentForm = document.createElement('div')
+        const closeModal = document.createElement('span')
+        const breaktag = document.createElement('br')
 
-        middleSection.className = 'content'
-        reviewSection.className = 'reviews'
-        top.className = 'top'
-        like.setAttribute('id', 'likes')
-        title.setAttribute('id', 'title')
-        card.setAttribute('id', 'card')
-        location.setAttribute('id', 'location')
-        form.setAttribute('id', 'hidden-form')
-        textBox.setAttribute('id', 'text-form')
 
-        title.innerText = cards.name
-        location.innerText = `${cards.city}, ${cards.state}`
-        button.innerText = 'View Comments!'
-        submit.innerText = 'Add Comment!'
-        close.innerText = 'Close Comments'
         like.innerText = `Total Likes: ${total}`
         likeButton.innerText = '+'
         dislikeButton.innerText = '-'
+        reviewery.innerText = 'Revieweries'
+        submit.innerText = 'Add Comment'
+        modalH1.innerText = 'Comments'
+        closeModal.innerText = 'X'
 
-        reviewSection.appendChild(button)
-        reviewSection.appendChild(like)
-        reviewSection.appendChild(likeButton)
-        reviewSection.appendChild(dislikeButton)
-        top.appendChild(title)
-        top.appendChild(location)
-        form.appendChild(close)
-        form.appendChild(submit)
-        form.appendChild(textBox)
-        card.appendChild(top)
-        card.appendChild(middleSection)
-        card.appendChild(reviewSection)
-        card.appendChild(form)
-        cardContainer.appendChild(card)
+        card.id = 'card'
+        cardTop.id = 'card-top'
+        title.id = 'title'
+        location.id = 'location'
+        mid.id = 'mid'
+        likeButton.id = 'like-button'
+        dislikeButton.id = 'like-button'
+        bottom.id = 'bottom'
+        reviewery.id = 'review'
+        modal.id = 'modal'
+        commentForm.id = 'comment-form'
+        closeModal.id = 'close'
+        text.id = 'text-area'
+        submit.id = 'submit'
+        console.log(text);
+        title.innerText = cards.name
+        location.innerText = `${cards.city}, ${cards.state}`
 
-        button.addEventListener('click', () => {
-            if (form.style.display === 'flex') {
-                form.style.display = 'none';
-            } else {
-                form.style.display = 'flex'
+        cardTop.append(title, location)
+        mid.append(like, likeButton, dislikeButton)
+        bottom.append(reviewery)
+        form.append(text, breaktag, submit)
+        commentForm.append(closeModal, modalH1, form)
+        modal.append(commentForm)
+        card.append(cardTop, mid, bottom, modal)
+        cardContainer.append(card)
+
+
+        reviewery.addEventListener('click', () => {
+            modal.style.display = 'block'
+        })
+        
+        closeModal.addEventListener('click', () => {
+            modal.style.display = 'none'
+        })
+        
+        window.addEventListener('click', (e) => {
+            if (e.target == modal) {
+                modal.style.display = 'none'
             }
-            card.style.height = '400px'
-            reviewSection.style.display = 'none'
-        })
-
-        form.addEventListener('submit', (e) => {
-            e.preventDefault()
-            const p = document.createElement('p')
-            p.innerText = textBox.value
-            console.log(textBox.value);
-            form.appendChild(p)
-            form.reset()            
-        })
-
-        close.addEventListener('click', (e) => {
-            e.preventDefault()
-            card.style.height = '200px'
-            form.style.display = 'none'
-            reviewSection.style.display = 'flex'
         })
 
         likeButton.addEventListener('click', (e) => {
@@ -89,6 +87,15 @@ const renderCard = (brewery) => {
 
         dislikeButton.addEventListener('click', (e) => {
             like.innerText = `Total Likes: ${--total}`
+        })
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault()
+            const p = document.createElement('p')
+            p.innerText = text.value
+            console.log(text.value);
+            form.append(p)
+            form.reset()            
         })
     })
 }

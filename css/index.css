@@ -46,123 +46,183 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+/* -----------------------------------------------------------------------------------End of Meyer Reset------------------------------------------------------------------------------- */
 
-/* ------------------------------------------------------------------ End of Meyer CSS Reset Code ---------------------------------------------------------------------------------------- */
 body {
-    font-family: 'roboto';
+    font-family: 'roboto'
 }
 
 header {
     display: flex;
+    position: relative;
 }
 
-header h1 {
-    text-align: center;
-    justify-self: center;
-    margin-top: 3%;
-    margin-left: 30%;
-    font-size: 2rem;
-    font-weight: bold;
-}
-
-#img-logo{
+header img {
     margin-left: 2%;
 }
 
-#title-content {
-    display: flex;
-    flex-direction: column;
+header h3 {
+    margin-left: 33.5%;
+    margin-top: 2%;
+    font-size: 24px;
+}
+
+#recent {
     text-align: center;
-    justify-content: center;
-}
-
-#title-content h1 {
-    font-size: 2.5rem;
+    font-size: 28px;
+    margin-top: -4.5%;
     font-weight: bold;
-    margin-bottom: 1%;
 }
 
-#title-content p {
-    font-size: 1.5rem;
+#line {
+    border: 1px solid black;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+#card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-left: 2%;
+    padding-right: 2%;
 }
 
 #card {
     border: 1px solid black;
-    width: 60%;
-    height: 11rem;
-    margin: 0 auto;
-    background-color: #c79c10;
-    border-radius: 6px;
-    margin-bottom: 2%;
+    width: 21%;
+    height: 280px;
+    border-radius: 4px;
+    box-shadow: .5px 1px;
+    background-color: #C79C10;
+    margin-bottom: 4%;
 }
 
-.top {
+#card-top {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
-    margin: 2% 4%;
+    margin-left: 4%;
+    margin-right: 4%;
+    margin-top: 4%;
+    font-size: 14px;
     font-weight: bold;
 }
 
-.reviews {
+#mid {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin: 8% 4%;
-}
-
-.reviews span {
-    font-weight: bolder;
-}
-
-.reviews button {
-    font-family: 'roboto';
-    padding: 0.5%;
-    cursor: pointer;
-}
-
-#likes {
-    display: flex;
-    margin-left: 74%;
-    margin-top: 1%;
-}
-
-
-#likes button {
-    width: 20px;
-    height: 25px;
-    margin-top: -12%;
-
-}
-
-
-#hidden-form {
-    display: none;
-    overflow: hidden;
+    justify-content: center;
     flex-wrap: wrap;
-    flex-direction: column-reverse;
-    bottom: 0
 }
 
-#hidden-form button {
-    max-height: 30px;
-    margin-right: 4%;
-    max-width: 20%;
-    margin: 0 auto;
-}
-
-#text-form {
-    width: 60%;
-    margin: 0 auto;
-    height: 60px;    
-}
-
-#hidden-form p {
-    width: 80%;
-    margin: 0 auto;
-    height: 20px;
+#mid p {
+    font-size: 18px;
+    width: 100%;
+    font-weight: bold;
     text-align: center;
+    margin-top: 20%;
+}
+
+#like-button {
+    width: 40px;
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-top: 2%;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 4px;
+    box-shadow: .2px .2px;
+}
+
+#bottom {
+    display: flex;
+    justify-content: center;
+    margin-top: 10%;
+}
+
+#review {
+    width: 110px;
+    height: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    box-shadow: .2px .2px;
+    font-weight: bold;
+}
+/* ----------------------------------------------------------------------------------Modal--------------------------------------------------------------------------------------------------- */
+
+#modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+#close {
+    color: black;
+    float: right;
+    font-size: 32px;
+    font-weight: bold;
+    margin-right: 1%;
+}
+
+#close:hover {
+    color: red;
+    text-decoration: none;
+    cursor: pointer
+}
+
+#comment-form {
+    width: 60%;
+    height: 65%;
     border: 1px solid black;
+    margin: 10% auto;
+    border-radius: 4px;
+    background-color: #C79C10;
+    text-align: center;
+    overflow: auto;
+}
+
+#comment-form h1 {
+    margin-top: 4%;
+    font-size: 28px;
+    margin-bottom: 2%;
+}
+
+#comment-form form input{
+    width: 580px;
+    height: 80px;
+    text-align: center;
+    margin-top: 2%;
+}
+
+#comment-form p {
+    font-size: 18px;
     background-color: white;
-    padding-top: 1%;
+    border: 1px solid black;
+    width: 75%;
+    height: 40px;
+    margin: 2% auto;
+    padding-top: 2%;
+    text-align: center;
+    border-radius: 4px;
+    box-shadow: .2px .2px;
+    margin-bottom: 1%;
+}
+
+#comment-form button {
+    margin-top: 2%;
+    width: 112px;
+    height: 26px;
+    font-weight: bold;
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    box-shadow: .2px .2px;
+    position: relative;
 }
