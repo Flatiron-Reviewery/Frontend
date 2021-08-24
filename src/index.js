@@ -12,10 +12,11 @@ const renderCard = brewery => {
     const searchBreak = document.createElement('br')
     const searchForm = document.querySelector('#search form')
     const searchResult = document.createElement('div')
+    const error = document.createElement('h1')
     search.append(searchBreak, searchForm)
     cardContainer.append(search)
     brewery.forEach(cards => {
-        let total = 0;
+        let total = Math.floor(Math.random() * 100)
 
         const card = document.createElement('div')
         const cardTop = document.createElement('div')
@@ -46,6 +47,7 @@ const renderCard = brewery => {
         closeModal.innerText = 'X'
         title.innerText = cards.name
         location.innerText = `${cards.city}, ${cards.state}`
+        error.innerText = 'Sorry, your search returned no results'
 
         card.id = 'card'
         cardTop.id = 'card-top'
@@ -115,7 +117,10 @@ const renderCard = brewery => {
             console.log(location.innerText);
             if(searchBar == location.innerText) {
                 searchResult.append(card)
+            } else {
+                cardContainer.append(error)
             }
+            
         })
     })
 }
