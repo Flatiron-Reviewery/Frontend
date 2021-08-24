@@ -15,7 +15,7 @@ const renderCard = brewery => {
     search.append(searchBreak, searchForm)
     cardContainer.append(search)
     brewery.forEach(cards => {
-        let total = 0;
+        let total = Math.floor(Math.random() * 100)
 
         const card = document.createElement('div')
         const cardTop = document.createElement('div')
