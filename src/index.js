@@ -117,10 +117,7 @@ const renderCard = brewery => {
             console.log(location.innerText);
             if(searchBar == location.innerText) {
                 searchResult.append(card)
-            } else {
-                cardContainer.append(error)
             }
-            
         })
     })
 }
