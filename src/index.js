@@ -64,6 +64,7 @@ const renderCard = brewery => {
         text.id = 'text-area'
         submit.id = 'submit'
         searchResult.id = 'search-result'
+        error.id = 'error'
 
         cardTop.append(title, location)
         mid.append(like, likeButton, dislikeButton)
@@ -117,6 +118,8 @@ const renderCard = brewery => {
             console.log(location.innerText);
             if(searchBar == location.innerText) {
                 searchResult.append(card)
+            } else if(searchBar === '') {
+                searchResult.append(error)
             }
         })
     })
