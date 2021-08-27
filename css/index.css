@@ -71,7 +71,7 @@ header h3 {
     text-align: center;
     font-size: 28px;
     margin-top: -4.5%;
-    font-weight: bold;
+    font-weight: bolder;
 }
 
 #line {
@@ -107,10 +107,6 @@ header h3 {
 
 #search-result {
     display: flex;
-}
-
-#search-result .card {
-    margin-left: 2%;
 }
 
 #card {

@@ -1,19 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('DOM Loaded');
-})
-
 const cardContainer = document.getElementById('card-container')
 const search = document.getElementById('search')
 const searchBreak = document.createElement('br')
 const searchForm = document.querySelector('#search form')
 const searchResult = document.createElement('div')
 const error = document.createElement('h1')
+
 search.append(searchBreak, searchForm)
 cardContainer.append(search)
 
 const URL = 'http://localhost:3000/posts'
-
-
 fetch(URL)
 .then(res => res.json())
 .then(brewery => brewery.forEach(renderCard))
@@ -167,3 +163,4 @@ function renderCard(brewery) {
         form.append(comment)
     }
 }
+})
